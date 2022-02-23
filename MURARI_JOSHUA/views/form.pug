@@ -1,0 +1,83 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Form
+  link(rel='stylesheet' href='/css/bootstrap.css')
+  link(rel='stylesheet' href='/css/index.css')
+.container
+  .heading
+    h2 Student Registration Form
+  h3#successreg(name='successreg')
+  form#form(action='/form' method='post' name='register' enctype="multipart/form-data")
+    .row
+      .col
+        div
+          label(for='sirname') Surame: 
+          input.form-control(type='text' name='surname' placeholder='Enter Surname')
+          small#surnamerr
+        div
+          label(for='givenname') Given Name: 
+          input.form-control(type='text' name='givenname' placeholder='Enter Given name')
+          small#givennamerr
+        div
+          label(for='title') Title: 
+          select#title.form-control(name='title')
+            option(value='' disabled='' selected='') --Select a category--
+            option(value='Mr') Mr.
+            option(value='Mrs') Mrs.
+            option(value='Dr') Dr.
+            option(value='Prof') Prof.
+            option(value='Eng') Eng.
+      .col
+        .card(style='width: 18rem;')
+          img#imgid.card-img-top(src='#' alt='Your Photo' width='170px' height='170px')
+          .card-body
+            // <h5 class="card-title">Your Photo</h5>
+            // <p class="card-text">Click on the button below to upload your photo.</p>
+            input#inputid(accept='image/*' type='file' name='profilepic' title='Upload Photo')
+            // <a href="#" class="btn btn-primary" style="background-color: purple;">Upload</a>
+    .form-control
+      label(for='gender') Gender:
+      .form-check
+        input#flexRadioDefault1.form-check-input(type='radio' name='gender' value='male' checked='')
+        label.form-check-label(for='flexRadioDefault1')
+          | Male
+      .form-check
+        input#flexRadioDefault2.form-check-input(type='radio' name='gender' value='female')
+        label.form-check-label(for='flexRadioDefault2')
+          | Female
+    .row
+      .col
+        label(for='dob') Date Of Birth: 
+        input.form-control(type='date' name='dob')
+        small#doberr
+      .col
+        label(for='country') Country: 
+        select#country.form-control(name='country')
+          option(value='' disabled='' selected='') --Select Country--
+          option(value='Uganda') Uganda
+          option(value='Kenya') Kenya
+          option(value='Tanzania') Tanzania
+          option(value='Rwanda') Rwanda
+          option(value='Burundi') Burundi
+        small#countryerr
+    div
+      label(for='residence') Place of Residende: 
+      input.form-control(type='text' name='residence' placeholder='Enter Place of Residence')
+      small#residenceerr
+    div
+      label(for='nation') Nationality: 
+      input.form-control(type='text' name='nation' placeholder='Enter Nationality')
+      small#nationerr
+    .d-grid.gap-2.d-md-flex.justify-content-md-end
+      button.btn.btn-primary.me-md-2(type='submit' style='background-color: purple;') Register
+script.
+  inputid.onchange = evt => {
+  const [file] = inputid.files
+  if (file) {
+  imgid.src = URL.createObjectURL(file);
+  }
+  }
+script(src='public/scripts/validation.js')

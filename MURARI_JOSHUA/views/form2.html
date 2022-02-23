@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Student Registration Form</h2>
+        </div> 
+        <div class="successreg1">
+            <h3 id="successreg" name="successreg">Registered Succesfully </h3>
+        </div>  
+        
+        <form action="/formroute" method="post" name="register" id="form">  
+            <div class="row"> 
+                <div class="col">         
+                    <div>
+                        <label for="sirname">Surame: </label>
+                        <input type="text" name="surname" placeholder="Enter Surname" class="form-control">
+                        <small id="surnamerr"></small>
+                    </div> 
+                    <div>
+                        <label for="givenname">Given Name: </label>
+                        <input type="text" name="givenname" placeholder="Enter Given name" class="form-control">
+                        <small id="givennamerr"></small>
+                    </div>
+                    <div>
+                        <label for="title">Title: </label>
+                        <select id="title" name="title"  class="form-control">
+                            <option value disabled selected>--Select a category--</option>
+                            <option value="Mr">Mr.</option>
+                            <option value="Mrs">Mrs.</option>
+                            <option value="Dr">Dr.</option>
+                            <option value="Prof">Prof.</option>
+                            <option value="Eng">Eng.</option>                    
+                        </select>       
+                        
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="#" class="card-img-top" alt="Your Photo" width="170px" height="170px" id="imgid">
+                        <!-- <div class="card-body"> -->
+                        <!-- <h5 class="card-title">Your Photo</h5> -->
+                        <!-- <p class="card-text">Click on the button below to upload your photo.</p> -->
+                        <input accept="image/*" type="file" name="profilepic" id="inputid" title="Upload Photo">
+                        <!-- <a href="#" class="btn btn-primary" style="background-color: purple;">Upload</a> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-control">
+                <label for="gender">Gender:</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    Male
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Female
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="dob">Date Of Birth: </label>
+                    <input type="date" name="dob" class="form-control">
+                    <small id="doberr"></small>
+                </div>
+                <div class="col">
+                    <label for="country">Country: </label>
+                    <select id="country" name="country"  class="form-control">
+                        <option value disabled selected>--Select Country--</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Burundi">Burundi</option>                    
+                    </select>                
+                    <small id="countryerr"></small>
+                </div>
+            </div>
+            <div>
+                <label for="residence">Place of Residende: </label>
+                <input type="text" name="residence" class="form-control" placeholder="Enter Place of Residence">
+                <small id="residenceerr"></small>
+            </div>
+            <div>
+                <label for="nation">Nationality: </label>
+                <input type="text" name="nation" class="form-control" placeholder="Enter Nationality">
+                <small id="nationerr"></small>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="submit" style="background-color: purple;">Register</button>                
+            </div>
+            
+        </form>
+    </div>
+    <script>
+        inputid.onchange = evt => {
+            const [file] = inputid.files
+            if (file) {
+                imgid.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
+    <script src="public/scripts/validation.js" ></script>
+</body>
+</html>
