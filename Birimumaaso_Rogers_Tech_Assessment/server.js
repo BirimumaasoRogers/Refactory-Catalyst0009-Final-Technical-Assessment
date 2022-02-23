@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 
+
 const regRoute = require("./routes/reg-route");
 
 //!==== Environment Variables ====
@@ -9,7 +10,7 @@ require('dotenv').config();
 
 //!==== Instanciation ====
 const app = express();
-const port = 5000;
+const port = process.env.port || 5000
 
 //!==== Mongoose Connection ====
 mongoose.connect(process.env.DATABASE_URI, {
@@ -47,3 +48,5 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
     console.log(`We are now live on ${port}`);
 })
+
+module.exports = app //For Testing

@@ -36,4 +36,13 @@ const studentRegSchema = new mongoose.Schema({
     }
 })
 
+// Sets the createdAt parameter equal to the current time
+studentRegSchema.pre('save', next => {
+    now = new Date();
+    if (!this.createdAt) {
+        this.createdAt = now;
+    }
+    next();
+});
+
 module.exports = mongoose.model("studentReg", studentRegSchema);
